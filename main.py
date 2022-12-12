@@ -1,5 +1,4 @@
-py -m pip --version
-py -m pip install seaborn
+
 import streamlit as st
 st.set_page_config(
     page_title="Stroke Prediction"
@@ -7,7 +6,6 @@ st.set_page_config(
 st.set_option('deprecation.showPyplotGlobalUse', False)
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
 
@@ -140,167 +138,6 @@ with tab1:
    Link Source Dataset : https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset""")
    df= load_dataset()
    df
-
-   #VISUALISASI DATA
-   #HEATMAP CORRELATION
-   st.header("Visualisasi Data")
-   st.subheader("A. Heatmap Correlation")
-   # Compute the correlation matrix
-   corr = df.corr()
-
-   # Generate a mask for the upper triangle
-   mask = np.triu(np.ones_like(corr, dtype=bool))
-
-   # Set up the matplotlib figure
-   f, ax = plt.subplots(figsize=(11, 9))
-
-   # Generate a custom diverging colormap
-   cmap = sns.diverging_palette(230, 20, as_cmap=True)
-
-   # Draw the heatmap with the mask and correct aspect ratio
-   sns.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0, square=True, linewidths=.5, cbar_kws={"shrink": .5})
-   st.pyplot(f)
-
-   #COUNT PLOT
-   st.subheader("B. Count Plot")
-   sns.set_theme(style="darkgrid")
-
-   #GENDER
-   st.write("1. Gender")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="gender")
-   st.pyplot(f)
-   st.write("Di atas, Anda dapat dilihat bahwa jumalah Perempuan yang ada di dataset lebih tinggi daripada laki-laki.")
-
-
-   #HYPERTENSION
-   st.write("2. Hypertension")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="hypertension")
-   st.pyplot(f)
-   st.write("Dari atas terlihat bahwa semakin sedikit orang yang menderita hipertensi.")
-
-   #STATUS MENIKAH
-   st.write("3. Status Menikah")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="ever_married")
-   st.pyplot(f)
-   st.write("Rasio yang bisa dilihat dari atas adalah sekitar 2:1 untuk pernah menikah.")
-
-   #WORK TYPE
-   st.write("4. Work Type")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="work_type")
-   st.pyplot(f)
-   st.write("Banyak orang bekerja di sektor swasta.")
-
-   #RECIDENCE TYPE
-   st.write("5. Residence Type")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="Residence_type")
-   st.pyplot(f)
-   st.write("Jenis tempat tinggalnya sama untuk orang yang ada dalam dataset.")
-
-   #SMOKING STATUS
-   st.write("6. Smoking Status")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="smoking_status")
-   st.pyplot(f)
-   st.write("Banyak orang tidak pernah merokok seumur hidupnya. Namun, tidak diketahui pasti status Unknown dari dataset.")
-
-   #SROKE
-   st.write("7. Stroke")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="stroke")
-   st.pyplot(f)
-   st.write("""Dari variabel dependen di atas, kita benar-benar memiliki lebih sedikit orang yang menderita stroke. Berarti dataset kita tidak seimbang. Sehingga, harus menggunakan teknik pengambilan sampel untuk membuat keseimbangan data.""")
-
-   #DISTRIBUTION PLOT
-   st.subheader("C. Distibution Plot")
-   #AVG GLOCOSE_LEVEL
-   st.write("1.  Rata-rata Level Glukosa")
-   fig = plt.figure(figsize=(7,7))
-   sns.distplot(df.avg_glucose_level, color="green", label="avg_glucose_level", kde= True)
-   plt.legend()
-   st.pyplot(fig)
-
-   #BMI
-   st.write("2.  Indeks Masa Tubuh")
-   fig = plt.figure(figsize=(7,7))
-   sns.distplot(df.bmi, color="orange", label="bmi", kde= True)
-   plt.legend()
-   st.pyplot(fig)
-
-   #STROKE VS NO STROKE BY BMI
-   st.write("3.  Stroke VS No Stroke berdasarkan BMI")
-   fig = plt.figure(figsize=(12,10))
-   ax1=sns.distplot(df[df['stroke'] == 0]["bmi"], color='green', label="No Stroke", kde= True) # No Stroke - green
-   ax2 =sns.distplot(df[df['stroke'] == 1]["bmi"], color='red', label="Stroke", kde= True) # Stroke - Red
-   plt.legend()
-   st.pyplot(fig)
-   st.write("Dari grafik diatas, terlihat bahwa kepadatan orang yang kelebihan berat badan yang menderita stroke lebih banyak.")
-
-   #STROKE VS NO STROKE BY AVG GLUCOSE_LEVEL
-   st.write("4.  Stroke VS No Stroke berdasarkan Avg Glucose Level")
-   fig = plt.figure(figsize=(12,10))
-   sns.distplot(df[df['stroke'] == 0]["avg_glucose_level"], color='green', label="No Stroke", kde= True) # No Stroke - green
-   sns.distplot(df[df['stroke'] == 1]["avg_glucose_level"], color='red', label="Stroke", kde= True) # Stroke - Red
-   plt.xlim([30,330])
-   plt.legend()
-   st.pyplot(fig)
-   st.write("Dari grafik diatas, terlihat bahwa kepadatan penduduk yang memiliki kadar glukosa kurang dari 100 lebih banyak yang menderita stroke.")
-
-   #STROKE VS NO STROKE BY AGE
-   st.write("4.  Stroke VS No Stroke berdasarkan Umur")
-   fig = plt.figure(figsize=(12,10))
-   sns.distplot(df[df['stroke'] == 0]["age"], color='green', label="No Stroke", kde= True) # No Stroke - green
-   sns.distplot(df[df['stroke'] == 1]["age"], color='red', label="Stroke", kde= True) # Stroke - Red
-   plt.xlim([18,100])
-   plt.legend()
-   st.pyplot(fig)
-   st.write("Dari grafik diatas, terlihat bahwa kepadatan penduduk berusia di atas 50 tahun yang menderita stroke lebih banyak.")
-
-   #SCATTER PLOT
-   st.subheader("D. Scatter Plot")
-
-   #AGE VS BMI
-   st.write("1.  Age Vs BMI")
-   fig = plt.figure(figsize=(7,7))
-   graph = sns.scatterplot(data=df, x="age", y="bmi", hue='gender')
-   graph.axhline(y= 25, linewidth=4, color='r', linestyle= '--')
-   st.pyplot(fig)
-   st.write("Dari plot di atas, kita dapat melihat bahwa banyak orang yang memiliki IMT di atas 25 mengalami kelebihan berat badan dan obesitas.")
-
-   #AGE VS BMI
-   st.write("2.  Age Vs Avg Glucose Level")
-   fig = plt.figure(figsize=(7,7))
-   graph = sns.scatterplot(data=df, x="age", y="avg_glucose_level", hue='gender')
-   graph.axhline(y= 150, linewidth=4, color='r', linestyle= '--')
-   st.pyplot(fig)
-   st.write("Dari gambar di atas, kita dapat melihat bahwa orang yang memiliki kadar glukosa di atas 150 relatif lebih sedikit dibandingkan orang di bawah ini. Jadi, kita dapat mengatakan bahwa orang di atas 150 mungkin menderita diabetes.")
-
-   #VIOLIN PLOT
-   st.subheader("E. Violin Plot")
-   fig = plt.figure(figsize=(13,13))
-   plt.subplot(2,3,1)
-   sns.violinplot(x = 'gender', y = 'stroke', data = df)
-   plt.subplot(2,3,2)
-   sns.violinplot(x = 'hypertension', y = 'stroke', data = df)
-   plt.subplot(2,3,3)
-   sns.violinplot(x = 'heart_disease', y = 'stroke', data = df)
-   plt.subplot(2,3,4)
-   sns.violinplot(x = 'ever_married', y = 'stroke', data = df)
-   plt.subplot(2,3,5)
-   sns.violinplot(x = 'work_type', y = 'stroke', data = df)
-   plt.xticks(fontsize=9, rotation=45)
-   plt.subplot(2,3,6)
-   sns.violinplot(x = 'Residence_type', y = 'stroke', data = df)
-   st.pyplot(fig)
-
-   #PAIR PLOT
-   st.subheader("F. Pair Plot")
-   sns.pairplot(data=df,hue='stroke',size=2,palette='OrRd')
-   st.pyplot(plt.show())
 
 
 with tab2:
