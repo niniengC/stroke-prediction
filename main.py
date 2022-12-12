@@ -8,6 +8,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
+from PIL import Image
+
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
@@ -73,11 +75,15 @@ tab1, tab2, tab3, tab4 = st.tabs(["Home", "Preprocessing", "Normalization dan Mo
 
 with tab1:
    st.header("About Stroke")
+   image = Image.open('stroke-0-alodokter.jpg')
+   st.image(image)
    st.write("""
     Stroke adalah kondisi ketika pasokan darah ke otak terganggu karena penyumbatan (stroke iskemik) atau pecahnya pembuluh darah (stroke hemoragik). Kondisi ini menyebabkan area tertentu pada otak tidak mendapat suplai oksigen dan nutrisi sehingga terjadi kematian sel-sel otak.
 
     Stroke merupakan keadaan darurat medis, karena tanpa suplai oksigen dan nutrisi, sel-sel pada bagian otak yang terdampak bisa mati hanya dalam hitungan menit. Akibatnya, bagian tubuh yang dikendalikan oleh area otak tersebut tidak bisa berfungsi dengan baik.
 
+    Stroke masih menjadi salah satu masalah utama kesehatan, bukan hanya di Indonesia namun di dunia. Penyakit stroke merupakan penyebab kematian kedua dan penyebab kecacatan ketiga di dunia. Stroke terjadi apabila pembuluh darah otak mengalami penyumbatan atau pecah yang mengakibatkan sebagian otak tidak mendapatkan pasokan darah yang membawa oksigen yang diperlukan sehingga mengalami kematian sel/jaringan (Kemenkes RI, 2019). Prevalensi stroke menurut data World Stroke Organization menunjukkan bahwa setiap tahunnya ada 13,7 juta kasus baru stroke, dan sekitar 5,5 juta kematian terjadi akibat penyakit stroke Umumnya sekitar 70 persen gejala stroke ringan bisa hilang kurang dari 10 menit atau 90 persen akan hilang kurang dari empat jam bila segera mendapatkan penanganan yang tepat. Masa Golden periode penyakit stroke adalah 8 jam sejak muncul gejala. Namun 80% masyarakat Indonesia belum mengetahui gejala penyakit stroke. Akibatnya masyarakat, sering terlambat membawa penderita stroke berobat ke RS. 
+    
     A. Gejala dan Penyebab Stroke
 
     Gejala stroke umumnya terjadi di bagian tubuh yang dikendalikan oleh area otak yang rusak. Gejala yang dialami penderita stroke bisa meliputi:
