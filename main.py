@@ -125,7 +125,7 @@ with tab1:
    st.write("""
    Dataset ini digunakan untuk memprediksi apakah pasien kemungkinan terkena stroke berdasarkan parameter input seperti jenis kelamin, usia, berbagai penyakit, dan status merokok. Setiap baris dalam data memberikan informasi yang relevan tentang pasien.
    
-   **Informasi Atribut**
+   **- Informasi Atribut -**
    1. id: pengidentifikasi unik
    2. gender: "Pria", "Wanita" atau "Lainnya"
    3. age : umur pasien
@@ -136,11 +136,46 @@ with tab1:
    8. Residence_type: "Pedesaan" atau "Perkotaan"
    9. avg_glucose_level : kadar glukosa rata-rata dalam darah
    10. bmi : indeks massa tubuh
-   11. smoking_status: "sebelumnya merokok", "tidak pernah merokok", "merokok" atau "Tidak diketahui"*
+
+   11. smoking_status: "sebelumnya merokok", "tidak pernah merokok", "merokok" atau "Tidak diketahui"
+
    12. stroke: 1 jika pasien mengalami stroke atau 0 jika tidak
    
    *Catatan* : "Tidak diketahui" dalam smoking_status berarti informasi tidak tersedia untuk pasien ini
+
+
+   **- Deskripsi Atribut -**
+   1. age (usia)
+   Feigin Valery (2004) yang menyatakan bahwa orang yang berusia di atas 50 tahun, tekanan darah sistoliknya tinggi (140 mmHg atau lebih) dianggap sebagai faktor risiko untuk stroke atau penyakit kardiovaskuler lain yang lebih besar dibandingkan dengan tekanan darah diastoliknya tinggi. 
    
+   2. gender (jenis kelamin)
+   stroke lebih banyak terjadi pada perempuan. Pada perempuan dengan menopause pada usia lanjut akan terjadi penurunan hormon estrogen. Hormon estrogen sendiri dapat melindungi pembuluh darah dari aterosklerosis, sehingga pada keadaan menopause tidak ada proteksi terhadap proses ateroskelerosis (Gofir, 2009).
+   
+   3. hypertension (hipertensi)
+   Teori dari Indrawati (2008) menyatakan bahwa hipertensi merupakan faktor risiko tunggal yang paling penting untuk stroke iskemik maupun stroke perdarahan. Hipertensi adalah penyebab utama stroke, apa pun jenisnya. Semakin tinggi tekanan darah semakin besar risiko terkena serangan stroke. Hipertensi menyebabkan gangguan kemampuan autoregulasi pembuluh darah otak. Pada tekanan darah tinggi akut, tekanan darah naik yang mendadak dan sangat tinggi menyebabkan fenomena sosis atau tasbih (sausage or bead string phenomenon) akibat dilatasi paksa. Tekanan darah yang mendadak tinggi ini menerobos respons vasokonstriksi dan menyebabkan rusaknya sawar darah otak dengan kebocoran fokal dari cairan melalui dinding arteri yang telah terentang berlebihan serta pembentukan edema otak.
+   
+   4. heart disease (penyakit jantung)
+   Penyakit jantung yang dapat menjadi resiko stroke, terutama penyakit yang disebut atrial fibrillation, yakni penyakit jantung dengan denyut jantung yang tidak teratur di bilik kiri atas. Denyut jantung di atrium kiri ini mencapai empat kali lebih cepat dibandingkan di bagian-bagian lain jantung. Ini menyebabkan aliran darah menjadi tidak teratur dan secara insidentil menjadi pembentukan gumpalan darah. Gumpalan-gumpalan inilah yang kemudian dapat mencapai otak dan menyebabkan stroke. Pada orang-orang berusia di atas 80 tahun, atrial fibrillation merupakan penyebab utama kematian pada satu di antara emapat kasus stroke. 
+   Penyakit jantung lainnya adalah cacat pada bentuk katup jantung (mitral valve stenosis atau mitral valve calcifivcation). Juga cacat pada bentuk otot jantung, misalnya PFO (Patent Foramen Ovale) atau lubang pada dinding jantung yang memisahkan kedua bilik atas. Cacat katup jantung lainnya adalah ASA (Atrial Septal Aneurysm) atau cacat bentuk congenital (sejak lahir) pada jaringan jantung, yakni penggelembungan dinding jantung ke arah salah satu bilik jantung, PFO dan ASA seringkali terjadi bersamaan sehingga memperbesar risiko stroke (Mahannad Shadine, 2010).
+   
+   5. ever married (pernah menikah)
+   Pada umumnya seseorang sudah menikah/hidup bersama dan bekerja, namun pada kelompok stroke proporsi tidak bekerja lebih tinggi dibanding bekerja. Kemungkinan seseorang tidak bekerja akibat stroke. Proporsi seseorang cerai hidup/ mati atau pisah pada kelompok stroke lebih tinggi dibanding hidup bersama atau belum menikah, kemungkinan perceraian meningkat akibat stroke atau karena usia seseorang sudah tua dan pasangan hidup sudah terlebih dahulu meninggal.
+   
+   6. residence type (tempat tinggal)
+   Saat ini Indonesia merupakan negara transisi yang akan berubah dari negara agraris menjadi negara industri, dengan konsekwensi pembangunan terjadi secara merata diseluruh wilayah, tidak terkecuali di desa ; contohnya adalah pembangunan mall yang sudah merambah desa belum lagi teknologi yang juga sudah dinikmati oleh warga desa. Hal ini mengakibatkan perubahan gaya hidup bagi masyarakat, makanan cepat saji tersedia dimana saja, kapan saja bisa dinikmati, akibatnya masyarakat malas untuk bergerak. Keadaan ini sesuai dengan pernyataan dari Rudianto (2010), Yastroki (2010) dan Nurhidayat & Rosjidi (2014) yang menyatakan bahwa faktor gaya hidup merupakan salah satu resiko terhadap kejadian stroke.
+   
+   7. work type (Tipe pekerjaan)
+   Aktivitas fisik memberikan suatu efek menguntungkan untuk mengendalikan faktor risiko stroke. Aktivitas fisik pada orang yang bekerja di dalam ruangan seperti orang yang bekerja di kantor cenderung memiliki aktivitas fisik yang sedikit. Dalam penelitian yang dilakukan Folsom, dkk (2003) menunjukkan aktivitas fisik yang lebih banyak dapat menurunkan risiko 20% pada kejadian stroke pada laki-laki maupun wanita. Aktivitas fisik cenderung menurunkan tekanan darah, meningkatkan vasodilatasi, meningkatkan toleransi glukosa, menurunkan berat badan dan mempromosikan kesehatan jantung. Aktivitas fisik dalam kadar sedang atau sangat 16 aktif memiliki risiko lebih rendah dari kejadian stroke dan kematian pada penyakit vaskuler daripada orang dengan tingkat aktifitas rendah (Stampfer et al, 2000).
+   
+   8. avg_glucose_level (kadar gula dalam darah)
+   Tugasworo (2002) yang menyatakan tingginya kadar gula darah dalam tubuh secara patologis berperan dalam peningkatan konsentrasi glikoprotein, yang merupakan pencetus atau faktor risiko dari beberapa penyakit vaskuler. Selain itu, adanya perubahan produksi protasiklin dan penurunan aktivitas plasminogen dalam pembuluh darah dapat merangsang terjadinya trombus. Diabetes mellitus akan mempercepat terjadinya aterosklerosis pembuluh darah kecil maupun besar di seluruh tubuh termasuk di otak, yang merupakan salah satu organ sasaran diabetes mellitus. Kadar glukosa darah yang tinggi pada saat stroke akan memperbesar kemungkinan meluasnya area infark karena terbentuknya asam laktat akibat metabolisme glukosa secara anaerobik yang merusak jaringan otak (Cipolla et al, 2011).
+   
+   9. imt (bmi)
+   Indeks massa tubuh (IMT) merupakan indeks yang secara sederhana dengan membandingkan proposi berat badan terhadap tinggi badan yang digunakan untuk mengelompokkan kelebihan berat badan dan obesitas pada orang dewasa (Supariasa, 2013). Kaitan indeks massa tubuh (IMT) dengan risiko terjadinya stroke pada seseorang adalah jika seseorang dikatakan obesitas maka orang tersebut memiliki risiko mengalami tinggi terjadinya stroke. Seseorang mengalami obesitas, diperlukan alat ukurnya yaitu indeks massa tubuh (IMT). Obesitas merupakan ketidak seimbangan yang berlangsung kronik/lama antara asupan kalori yang masuk tidak seimbang dengan yang dikeluarkan, hal ini akan terjadi penumpukan karbohidrat, dan lemak dalam tubuh.
+   
+   10. smoking status (status merokok)
+   Merokok merupakan faktor risiko stroke yang sebenarnya paling mudah diubah. Perokok berat menghadapi risiko lebih besar dibandingkan perokok ringan. Merokok hampir melipatgandakan risiko stroke iskemik, terlepas dari faktor risiko lain, dan dapat juga meningkatkan risiko subaraknoid hemoragik hingga 3,5%. Sesungguhnya, risiko stroke menurun dengan seketika setelah berhenti merokok dan terlihat jelas dalam periode 2-4 tahun setelah berhenti merokok. Perlu diketahui bahwa merokok memicu produksi fibrinogen (faktor penggumpal darah) lebih banyak sehingga merangsang timbulnya aterosklerosis.
+
    Link Source Dataset : https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset""")
    df= load_dataset()
    df
@@ -348,16 +383,13 @@ with tab2:
     st.write("Jumlah Baris dan Kolom :", df_new.shape)
     st.write("Jumlah Kelas :", len(df_new['stroke'].unique()))
     
-
-
 with tab3:
     st.header("Normalization")
-    df_new2=df_new
     #Normalisasi
     nama_normal = st.selectbox(
         'Pilih Normalisasi',
         ('Standard Scaler', 'MinMax Scaler'))
-    choose_normalisasi= normalisasi(df_new2,nama_normal)
+    choose_normalisasi= normalisasi(df_new,nama_normal)
     choose_normalisasi
 
     X = choose_normalisasi.drop(["stroke"], axis=1).values
@@ -487,33 +519,26 @@ with tab3:
         plt.title('F1 Score')
         st.pyplot(plt.show())
 
-    
-
 with tab4:
-    #Normalisasi
-    name_normal = st.radio(
-        'Pilih Normalisasi',
-        ('Standard Scaler', 'MinMax Scaler'))
-    pilih_normalisasi= normalisasi(df_new,name_normal)
-
-    X = pilih_normalisasi.drop(["stroke"], axis=1).values
-    y = pilih_normalisasi["stroke"].values
-        
-
+    num_cols=['age', 'bmi', 'avg_glucose_level']
+    jenis_normalisasi=MinMaxScaler()
+    df_new[num_cols] = jenis_normalisasi.fit_transform(df_new[num_cols])
+    X = df_new.drop(["stroke"], axis=1).values
+    y = df_new["stroke"].values
     #Proses Klasifikasi
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-
-    nama_model=st.radio('Pilih Model',('Naive-Bayes GaussianNB','K-Nearest Neighbor', 'Decission Tree', 'Random Forest'))
-    params = tambah_parameter(nama_model)
-    model = pilih_klasifikasi(nama_model,params)
-    
+    model = KNeighborsClassifier(n_neighbors=2)
     model.fit(X_train, y_train)
+    y_pred= model.predict(X_test)
+    accuracy=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
+    if model:
+        nama_model="K-Nearest Neighbors"
+    if jenis_normalisasi:
+        nama_normal="MinMax Scaler"
 
     st.info(f"""
-        Anda sekarang menggunakan jenis normalisasi {nama_normal} dan jenis model {nama_model}.
+        Implementasi ini menggunakan jenis normalisasi {nama_normal} dan jenis model {nama_model} dengan tingkat akurasi terbaik yaitu {accuracy}%.
         """)
-
-    
 
     with st.form("my_form"):
         age = st.number_input('Age')
