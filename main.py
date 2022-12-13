@@ -135,7 +135,7 @@ with tab1:
    7. work_type: "anak-anak", "Pekerja Pemerintah", "Never_worked", "Swasta" atau "Wiraswasta"
    8. Residence_type: "Pedesaan" atau "Perkotaan"
    9. avg_glucose_level : kadar glukosa rata-rata dalam darah
-   10.bmi : indeks massa tubuh
+   10. bmi : indeks massa tubuh
    11. smoking_status: "sebelumnya merokok", "tidak pernah merokok", "merokok" atau "Tidak diketahui"*
    12. stroke: 1 jika pasien mengalami stroke atau 0 jika tidak
    
