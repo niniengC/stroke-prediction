@@ -188,7 +188,7 @@ with tab1:
    corr = df.corr()
 
    # Generate a mask for the upper triangle
-   mask = np.triu(np.ones_like(corr)
+   mask = np.triu(np.ones_like(corr))
 
    # Set up the matplotlib figure
    f, ax = plt.subplots(figsize=(11, 9))
