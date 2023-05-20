@@ -200,461 +200,461 @@ with tab1:
    sns.heatmap(corr, mask=mask, cmap=cmap, vmax=.3, center=0, square=True, linewidths=.5, cbar_kws={"shrink": .5})
    st.pyplot(f)
 
-   #COUNT PLOT
-   st.subheader("B. Count Plot")
-   sns.set_theme(style="darkgrid")
+#    #COUNT PLOT
+#    st.subheader("B. Count Plot")
+#    sns.set_theme(style="darkgrid")
 
-   #GENDER
-   st.write("1. Gender")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="gender")
-   st.pyplot(f)
-   st.write("Di atas, Anda dapat dilihat bahwa jumalah Perempuan yang ada di dataset lebih tinggi daripada laki-laki.")
-
-
-   #HYPERTENSION
-   st.write("2. Hypertension")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="hypertension")
-   st.pyplot(f)
-   st.write("Dari atas terlihat bahwa semakin sedikit orang yang menderita hipertensi.")
-
-   #STATUS MENIKAH
-   st.write("3. Status Menikah")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="ever_married")
-   st.pyplot(f)
-   st.write("Rasio yang bisa dilihat dari atas adalah sekitar 2:1 untuk pernah menikah.")
-
-   #WORK TYPE
-   st.write("4. Work Type")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="work_type")
-   st.pyplot(f)
-   st.write("Banyak orang bekerja di sektor swasta.")
-
-   #RECIDENCE TYPE
-   st.write("5. Residence Type")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="Residence_type")
-   st.pyplot(f)
-   st.write("Jenis tempat tinggalnya sama untuk orang yang ada dalam dataset.")
-
-   #SMOKING STATUS
-   st.write("6. Smoking Status")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="smoking_status")
-   st.pyplot(f)
-   st.write("Banyak orang tidak pernah merokok seumur hidupnya. Namun, tidak diketahui pasti status Unknown dari dataset.")
-
-   #SROKE
-   st.write("7. Stroke")
-   f, ax =plt.subplots()
-   ax = sns.countplot(data=df, x="stroke")
-   st.pyplot(f)
-   st.write("""Dari variabel dependen di atas, kita benar-benar memiliki lebih sedikit orang yang menderita stroke. Berarti dataset kita tidak seimbang. Sehingga, harus menggunakan teknik pengambilan sampel untuk membuat keseimbangan data.""")
-
-   #DISTRIBUTION PLOT
-   st.subheader("C. Distibution Plot")
-   #AVG GLOCOSE_LEVEL
-   st.write("1.  Rata-rata Level Glukosa")
-   fig = plt.figure(figsize=(7,7))
-   sns.distplot(df.avg_glucose_level, color="green", label="avg_glucose_level", kde= True)
-   plt.legend()
-   st.pyplot(fig)
-
-   #BMI
-   st.write("2.  Indeks Masa Tubuh")
-   fig = plt.figure(figsize=(7,7))
-   sns.distplot(df.bmi, color="orange", label="bmi", kde= True)
-   plt.legend()
-   st.pyplot(fig)
-
-   #STROKE VS NO STROKE BY BMI
-   st.write("3.  Stroke VS No Stroke berdasarkan BMI")
-   fig = plt.figure(figsize=(12,10))
-   ax1=sns.distplot(df[df['stroke'] == 0]["bmi"], color='green', label="No Stroke", kde= True) # No Stroke - green
-   ax2 =sns.distplot(df[df['stroke'] == 1]["bmi"], color='red', label="Stroke", kde= True) # Stroke - Red
-   plt.legend()
-   st.pyplot(fig)
-   st.write("Dari grafik diatas, terlihat bahwa kepadatan orang yang kelebihan berat badan yang menderita stroke lebih banyak.")
-
-   #STROKE VS NO STROKE BY AVG GLUCOSE_LEVEL
-   st.write("4.  Stroke VS No Stroke berdasarkan Avg Glucose Level")
-   fig = plt.figure(figsize=(12,10))
-   sns.distplot(df[df['stroke'] == 0]["avg_glucose_level"], color='green', label="No Stroke", kde= True) # No Stroke - green
-   sns.distplot(df[df['stroke'] == 1]["avg_glucose_level"], color='red', label="Stroke", kde= True) # Stroke - Red
-   plt.xlim([30,330])
-   plt.legend()
-   st.pyplot(fig)
-   st.write("Dari grafik diatas, terlihat bahwa kepadatan penduduk yang memiliki kadar glukosa kurang dari 100 lebih banyak yang menderita stroke.")
-
-   #STROKE VS NO STROKE BY AGE
-   st.write("4.  Stroke VS No Stroke berdasarkan Umur")
-   fig = plt.figure(figsize=(12,10))
-   sns.distplot(df[df['stroke'] == 0]["age"], color='green', label="No Stroke", kde= True) # No Stroke - green
-   sns.distplot(df[df['stroke'] == 1]["age"], color='red', label="Stroke", kde= True) # Stroke - Red
-   plt.xlim([18,100])
-   plt.legend()
-   st.pyplot(fig)
-   st.write("Dari grafik diatas, terlihat bahwa kepadatan penduduk berusia di atas 50 tahun yang menderita stroke lebih banyak.")
-
-   #SCATTER PLOT
-   st.subheader("D. Scatter Plot")
-
-   #AGE VS BMI
-   st.write("1.  Age Vs BMI")
-   fig = plt.figure(figsize=(7,7))
-   graph = sns.scatterplot(data=df, x="age", y="bmi", hue='gender')
-   graph.axhline(y= 25, linewidth=4, color='r', linestyle= '--')
-   st.pyplot(fig)
-   st.write("Dari plot di atas, kita dapat melihat bahwa banyak orang yang memiliki IMT di atas 25 mengalami kelebihan berat badan dan obesitas.")
-
-   #AGE VS BMI
-   st.write("2.  Age Vs Avg Glucose Level")
-   fig = plt.figure(figsize=(7,7))
-   graph = sns.scatterplot(data=df, x="age", y="avg_glucose_level", hue='gender')
-   graph.axhline(y= 150, linewidth=4, color='r', linestyle= '--')
-   st.pyplot(fig)
-   st.write("Dari gambar di atas, kita dapat melihat bahwa orang yang memiliki kadar glukosa di atas 150 relatif lebih sedikit dibandingkan orang di bawah ini. Jadi, kita dapat mengatakan bahwa orang di atas 150 mungkin menderita diabetes.")
-
-   #VIOLIN PLOT
-   st.subheader("E. Violin Plot")
-   fig = plt.figure(figsize=(13,13))
-   plt.subplot(2,3,1)
-   sns.violinplot(x = 'gender', y = 'stroke', data = df)
-   plt.subplot(2,3,2)
-   sns.violinplot(x = 'hypertension', y = 'stroke', data = df)
-   plt.subplot(2,3,3)
-   sns.violinplot(x = 'heart_disease', y = 'stroke', data = df)
-   plt.subplot(2,3,4)
-   sns.violinplot(x = 'ever_married', y = 'stroke', data = df)
-   plt.subplot(2,3,5)
-   sns.violinplot(x = 'work_type', y = 'stroke', data = df)
-   plt.xticks(fontsize=9, rotation=45)
-   plt.subplot(2,3,6)
-   sns.violinplot(x = 'Residence_type', y = 'stroke', data = df)
-   st.pyplot(fig)
-
-   #PAIR PLOT
-   st.subheader("F. Pair Plot")
-   sns.pairplot(data=df,hue='stroke',size=2,palette='OrRd')
-   st.pyplot(plt.show())
+#    #GENDER
+#    st.write("1. Gender")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="gender")
+#    st.pyplot(f)
+#    st.write("Di atas, Anda dapat dilihat bahwa jumalah Perempuan yang ada di dataset lebih tinggi daripada laki-laki.")
 
 
-with tab2:
-    st.write("""Teknik preprocessing data dapat meningkatkan kualitas data, sehingga membantu meningkatkan akurasi dan efisiensi proses penambangan selanjutnya. 
-        Data preprocessing merupakan langkah penting dalam proses penemuan pengetahuan, karena keputusan yang berkualitas harus didasarkan pada data yang berkualitas. 
-        Mendeteksi anomali data, memperbaikinya lebih awal, dan mengurangi data yang akan dianalisis dapat memberikan hasil yang sangat besar untuk pengambilan keputusan.""")
+#    #HYPERTENSION
+#    st.write("2. Hypertension")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="hypertension")
+#    st.pyplot(f)
+#    st.write("Dari atas terlihat bahwa semakin sedikit orang yang menderita hipertensi.")
+
+#    #STATUS MENIKAH
+#    st.write("3. Status Menikah")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="ever_married")
+#    st.pyplot(f)
+#    st.write("Rasio yang bisa dilihat dari atas adalah sekitar 2:1 untuk pernah menikah.")
+
+#    #WORK TYPE
+#    st.write("4. Work Type")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="work_type")
+#    st.pyplot(f)
+#    st.write("Banyak orang bekerja di sektor swasta.")
+
+#    #RECIDENCE TYPE
+#    st.write("5. Residence Type")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="Residence_type")
+#    st.pyplot(f)
+#    st.write("Jenis tempat tinggalnya sama untuk orang yang ada dalam dataset.")
+
+#    #SMOKING STATUS
+#    st.write("6. Smoking Status")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="smoking_status")
+#    st.pyplot(f)
+#    st.write("Banyak orang tidak pernah merokok seumur hidupnya. Namun, tidak diketahui pasti status Unknown dari dataset.")
+
+#    #SROKE
+#    st.write("7. Stroke")
+#    f, ax =plt.subplots()
+#    ax = sns.countplot(data=df, x="stroke")
+#    st.pyplot(f)
+#    st.write("""Dari variabel dependen di atas, kita benar-benar memiliki lebih sedikit orang yang menderita stroke. Berarti dataset kita tidak seimbang. Sehingga, harus menggunakan teknik pengambilan sampel untuk membuat keseimbangan data.""")
+
+#    #DISTRIBUTION PLOT
+#    st.subheader("C. Distibution Plot")
+#    #AVG GLOCOSE_LEVEL
+#    st.write("1.  Rata-rata Level Glukosa")
+#    fig = plt.figure(figsize=(7,7))
+#    sns.distplot(df.avg_glucose_level, color="green", label="avg_glucose_level", kde= True)
+#    plt.legend()
+#    st.pyplot(fig)
+
+#    #BMI
+#    st.write("2.  Indeks Masa Tubuh")
+#    fig = plt.figure(figsize=(7,7))
+#    sns.distplot(df.bmi, color="orange", label="bmi", kde= True)
+#    plt.legend()
+#    st.pyplot(fig)
+
+#    #STROKE VS NO STROKE BY BMI
+#    st.write("3.  Stroke VS No Stroke berdasarkan BMI")
+#    fig = plt.figure(figsize=(12,10))
+#    ax1=sns.distplot(df[df['stroke'] == 0]["bmi"], color='green', label="No Stroke", kde= True) # No Stroke - green
+#    ax2 =sns.distplot(df[df['stroke'] == 1]["bmi"], color='red', label="Stroke", kde= True) # Stroke - Red
+#    plt.legend()
+#    st.pyplot(fig)
+#    st.write("Dari grafik diatas, terlihat bahwa kepadatan orang yang kelebihan berat badan yang menderita stroke lebih banyak.")
+
+#    #STROKE VS NO STROKE BY AVG GLUCOSE_LEVEL
+#    st.write("4.  Stroke VS No Stroke berdasarkan Avg Glucose Level")
+#    fig = plt.figure(figsize=(12,10))
+#    sns.distplot(df[df['stroke'] == 0]["avg_glucose_level"], color='green', label="No Stroke", kde= True) # No Stroke - green
+#    sns.distplot(df[df['stroke'] == 1]["avg_glucose_level"], color='red', label="Stroke", kde= True) # Stroke - Red
+#    plt.xlim([30,330])
+#    plt.legend()
+#    st.pyplot(fig)
+#    st.write("Dari grafik diatas, terlihat bahwa kepadatan penduduk yang memiliki kadar glukosa kurang dari 100 lebih banyak yang menderita stroke.")
+
+#    #STROKE VS NO STROKE BY AGE
+#    st.write("4.  Stroke VS No Stroke berdasarkan Umur")
+#    fig = plt.figure(figsize=(12,10))
+#    sns.distplot(df[df['stroke'] == 0]["age"], color='green', label="No Stroke", kde= True) # No Stroke - green
+#    sns.distplot(df[df['stroke'] == 1]["age"], color='red', label="Stroke", kde= True) # Stroke - Red
+#    plt.xlim([18,100])
+#    plt.legend()
+#    st.pyplot(fig)
+#    st.write("Dari grafik diatas, terlihat bahwa kepadatan penduduk berusia di atas 50 tahun yang menderita stroke lebih banyak.")
+
+#    #SCATTER PLOT
+#    st.subheader("D. Scatter Plot")
+
+#    #AGE VS BMI
+#    st.write("1.  Age Vs BMI")
+#    fig = plt.figure(figsize=(7,7))
+#    graph = sns.scatterplot(data=df, x="age", y="bmi", hue='gender')
+#    graph.axhline(y= 25, linewidth=4, color='r', linestyle= '--')
+#    st.pyplot(fig)
+#    st.write("Dari plot di atas, kita dapat melihat bahwa banyak orang yang memiliki IMT di atas 25 mengalami kelebihan berat badan dan obesitas.")
+
+#    #AGE VS BMI
+#    st.write("2.  Age Vs Avg Glucose Level")
+#    fig = plt.figure(figsize=(7,7))
+#    graph = sns.scatterplot(data=df, x="age", y="avg_glucose_level", hue='gender')
+#    graph.axhline(y= 150, linewidth=4, color='r', linestyle= '--')
+#    st.pyplot(fig)
+#    st.write("Dari gambar di atas, kita dapat melihat bahwa orang yang memiliki kadar glukosa di atas 150 relatif lebih sedikit dibandingkan orang di bawah ini. Jadi, kita dapat mengatakan bahwa orang di atas 150 mungkin menderita diabetes.")
+
+#    #VIOLIN PLOT
+#    st.subheader("E. Violin Plot")
+#    fig = plt.figure(figsize=(13,13))
+#    plt.subplot(2,3,1)
+#    sns.violinplot(x = 'gender', y = 'stroke', data = df)
+#    plt.subplot(2,3,2)
+#    sns.violinplot(x = 'hypertension', y = 'stroke', data = df)
+#    plt.subplot(2,3,3)
+#    sns.violinplot(x = 'heart_disease', y = 'stroke', data = df)
+#    plt.subplot(2,3,4)
+#    sns.violinplot(x = 'ever_married', y = 'stroke', data = df)
+#    plt.subplot(2,3,5)
+#    sns.violinplot(x = 'work_type', y = 'stroke', data = df)
+#    plt.xticks(fontsize=9, rotation=45)
+#    plt.subplot(2,3,6)
+#    sns.violinplot(x = 'Residence_type', y = 'stroke', data = df)
+#    st.pyplot(fig)
+
+#    #PAIR PLOT
+#    st.subheader("F. Pair Plot")
+#    sns.pairplot(data=df,hue='stroke',size=2,palette='OrRd')
+#    st.pyplot(plt.show())
+
+
+# with tab2:
+#     st.write("""Teknik preprocessing data dapat meningkatkan kualitas data, sehingga membantu meningkatkan akurasi dan efisiensi proses penambangan selanjutnya. 
+#         Data preprocessing merupakan langkah penting dalam proses penemuan pengetahuan, karena keputusan yang berkualitas harus didasarkan pada data yang berkualitas. 
+#         Mendeteksi anomali data, memperbaikinya lebih awal, dan mengurangi data yang akan dianalisis dapat memberikan hasil yang sangat besar untuk pengambilan keputusan.""")
     
-    st.subheader("Dataset Mentah")
-    df = load_dataset()
-    df
+#     st.subheader("Dataset Mentah")
+#     df = load_dataset()
+#     df
 
-    st.write("Jumlah Baris dan Kolom :", df.shape)
-    st.write("Jumlah Kelas :", len(df['stroke'].unique()))
+#     st.write("Jumlah Baris dan Kolom :", df.shape)
+#     st.write("Jumlah Kelas :", len(df['stroke'].unique()))
     
-    #Preprocessing
+#     #Preprocessing
 
-    st.subheader("Data Cleanning")
-    st.write("Drop kolom id")
-    df=df.drop(['id'],axis=1)
-    df
-    st.write("Mengatasi Hilangnya Data (Missing Value)")
+#     st.subheader("Data Cleanning")
+#     st.write("Drop kolom id")
+#     df=df.drop(['id'],axis=1)
+#     df
+#     st.write("Mengatasi Hilangnya Data (Missing Value)")
 
-    null= df.isnull().sum()
-    null
+#     null= df.isnull().sum()
+#     null
 
-    st.write("Dari tabel diatas dapat dilihat bahwa jumlah Missing Value pada kolom BMI sebanyak ",df.bmi.isnull().sum(), """
-        dalam hal ini dapat diisi dengan strategi mean (rata-rata dari jumlah kolom)""")
+#     st.write("Dari tabel diatas dapat dilihat bahwa jumlah Missing Value pada kolom BMI sebanyak ",df.bmi.isnull().sum(), """
+#         dalam hal ini dapat diisi dengan strategi mean (rata-rata dari jumlah kolom)""")
     
-    imp = SimpleImputer(strategy='mean')
-    df['bmi'] = imp.fit_transform(df[['bmi']])
+#     imp = SimpleImputer(strategy='mean')
+#     df['bmi'] = imp.fit_transform(df[['bmi']])
     
-    st.write("Berikut ini merupakan data setelah nilai yang kosong diisi dengan strategi mean")
-    df
+#     st.write("Berikut ini merupakan data setelah nilai yang kosong diisi dengan strategi mean")
+#     df
 
-    st.subheader("One Hot Encoding")
+#     st.subheader("One Hot Encoding")
     
-    categorical_cols = df.select_dtypes("object")
-    df_new = pd.get_dummies(df, columns=categorical_cols.columns)
-    df_new
+#     categorical_cols = df.select_dtypes("object")
+#     df_new = pd.get_dummies(df, columns=categorical_cols.columns)
+#     df_new
 
-    st.write("Jumlah Baris dan Kolom :", df_new.shape)
-    st.write("Jumlah Kelas :", len(df_new['stroke'].unique()))
+#     st.write("Jumlah Baris dan Kolom :", df_new.shape)
+#     st.write("Jumlah Kelas :", len(df_new['stroke'].unique()))
     
-with tab3:
-    st.header("Normalization")
-    #Normalisasi
-    nama_normal = st.selectbox(
-        'Pilih Normalisasi',
-        ('Standard Scaler', 'MinMax Scaler'))
-    choose_normalisasi= normalisasi(df_new,nama_normal)
-    choose_normalisasi
+# with tab3:
+#     st.header("Normalization")
+#     #Normalisasi
+#     nama_normal = st.selectbox(
+#         'Pilih Normalisasi',
+#         ('Standard Scaler', 'MinMax Scaler'))
+#     choose_normalisasi= normalisasi(df_new,nama_normal)
+#     choose_normalisasi
 
-    X = choose_normalisasi.drop(["stroke"], axis=1).values
-    y = choose_normalisasi["stroke"].values
+#     X = choose_normalisasi.drop(["stroke"], axis=1).values
+#     y = choose_normalisasi["stroke"].values
         
 
-    #Proses Klasifikasi
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+#     #Proses Klasifikasi
+#     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-    st.header("Modelling")
-    st.write("Pilihlah model yang akan dibandingkan!")
+#     st.header("Modelling")
+#     st.write("Pilihlah model yang akan dibandingkan!")
 
-    grup_prediksi=[]
-    acc=[]
-    grup_precision=[]
-    grup_recall=[]
-    grup_f1=[]
-    nb=st.checkbox("Naive-Bayes GaussianNB")
-    if nb:
-        model_nb=GaussianNB()
-        model_nb.fit(X_train, y_train)
-        y_pred= model_nb.predict(X_test)
-        accuracy_nb=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
-        precision_nb=round(precision_score(y_pred, y_test),ndigits=2)
-        recall_nb =  round(recall_score(y_test, y_pred), ndigits=2)
-        f1_nb = round(f1_score(y_test,y_pred), ndigits=2)
-        grup_prediksi.append("Naive-Bayes GaussianNB")
-        acc.append(accuracy_nb)
-        grup_precision.append(precision_nb)
-        grup_recall.append(recall_nb)
-        grup_f1.append(f1_nb)
+#     grup_prediksi=[]
+#     acc=[]
+#     grup_precision=[]
+#     grup_recall=[]
+#     grup_f1=[]
+#     nb=st.checkbox("Naive-Bayes GaussianNB")
+#     if nb:
+#         model_nb=GaussianNB()
+#         model_nb.fit(X_train, y_train)
+#         y_pred= model_nb.predict(X_test)
+#         accuracy_nb=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
+#         precision_nb=round(precision_score(y_pred, y_test),ndigits=2)
+#         recall_nb =  round(recall_score(y_test, y_pred), ndigits=2)
+#         f1_nb = round(f1_score(y_test,y_pred), ndigits=2)
+#         grup_prediksi.append("Naive-Bayes GaussianNB")
+#         acc.append(accuracy_nb)
+#         grup_precision.append(precision_nb)
+#         grup_recall.append(recall_nb)
+#         grup_f1.append(f1_nb)
 
-    knn=st.checkbox("K-Nearest Neighbor")
-    if knn:
-        K_value= st.slider("k",1,15)
-        model_knn=KNeighborsClassifier(n_neighbors=K_value)
-        model_knn.fit(X_train, y_train)
-        y_pred= model_knn.predict(X_test)
-        accuracy_knn=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
-        precision_knn=round(precision_score(y_pred, y_test),ndigits=2)
-        recall_knn =  round(recall_score(y_test, y_pred), ndigits=2)
-        f1_knn = round(f1_score(y_test,y_pred), ndigits=2)
-        grup_prediksi.append("K-Nearest Neighbor")
-        acc.append(accuracy_knn)
-        grup_precision.append(precision_knn)
-        grup_recall.append(recall_knn)
-        grup_f1.append(f1_knn)
+#     knn=st.checkbox("K-Nearest Neighbor")
+#     if knn:
+#         K_value= st.slider("k",1,15)
+#         model_knn=KNeighborsClassifier(n_neighbors=K_value)
+#         model_knn.fit(X_train, y_train)
+#         y_pred= model_knn.predict(X_test)
+#         accuracy_knn=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
+#         precision_knn=round(precision_score(y_pred, y_test),ndigits=2)
+#         recall_knn =  round(recall_score(y_test, y_pred), ndigits=2)
+#         f1_knn = round(f1_score(y_test,y_pred), ndigits=2)
+#         grup_prediksi.append("K-Nearest Neighbor")
+#         acc.append(accuracy_knn)
+#         grup_precision.append(precision_knn)
+#         grup_recall.append(recall_knn)
+#         grup_f1.append(f1_knn)
 
-    dt=st.checkbox("Decision Tree")
-    if dt:
-        kriteria = st.radio("Pilih Criterion",("entropy","gini"))
-        model_dt=DecisionTreeClassifier(criterion=kriteria)
-        model_dt.fit(X_train, y_train)
-        y_pred= model_dt.predict(X_test)
-        accuracy_dt=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
-        precision_dt=round(precision_score(y_pred, y_test),ndigits=2)
-        recall_dt =  round(recall_score(y_test, y_pred), ndigits=2)
-        f1_dt = round(f1_score(y_test,y_pred), ndigits=2)
-        grup_prediksi.append("Decision Tree")
-        acc.append(accuracy_dt)
-        grup_precision.append(precision_dt)
-        grup_recall.append(recall_dt)
-        grup_f1.append(f1_dt)
+#     dt=st.checkbox("Decision Tree")
+#     if dt:
+#         kriteria = st.radio("Pilih Criterion",("entropy","gini"))
+#         model_dt=DecisionTreeClassifier(criterion=kriteria)
+#         model_dt.fit(X_train, y_train)
+#         y_pred= model_dt.predict(X_test)
+#         accuracy_dt=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
+#         precision_dt=round(precision_score(y_pred, y_test),ndigits=2)
+#         recall_dt =  round(recall_score(y_test, y_pred), ndigits=2)
+#         f1_dt = round(f1_score(y_test,y_pred), ndigits=2)
+#         grup_prediksi.append("Decision Tree")
+#         acc.append(accuracy_dt)
+#         grup_precision.append(precision_dt)
+#         grup_recall.append(recall_dt)
+#         grup_f1.append(f1_dt)
 
-    rf=st.checkbox("Random Forest")
-    if rf:
-        n_estimators=st.slider("n_estimators", 2, 15)
-        model_rf=RandomForestClassifier(n_estimators=n_estimators)
-        model_rf.fit(X_train, y_train)
-        y_pred= model_rf.predict(X_test)
-        accuracy_rf=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
-        precision_rf=round(precision_score(y_pred, y_test),ndigits=2)
-        recall_rf =  round(recall_score(y_test, y_pred), ndigits=2)
-        f1_rf = round(f1_score(y_test,y_pred), ndigits=2)
-        grup_prediksi.append("Random Forest")
-        acc.append(accuracy_rf)
-        grup_precision.append(precision_rf)
-        grup_recall.append(recall_rf)
-        grup_f1.append(f1_rf)
+#     rf=st.checkbox("Random Forest")
+#     if rf:
+#         n_estimators=st.slider("n_estimators", 2, 15)
+#         model_rf=RandomForestClassifier(n_estimators=n_estimators)
+#         model_rf.fit(X_train, y_train)
+#         y_pred= model_rf.predict(X_test)
+#         accuracy_rf=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
+#         precision_rf=round(precision_score(y_pred, y_test),ndigits=2)
+#         recall_rf =  round(recall_score(y_test, y_pred), ndigits=2)
+#         f1_rf = round(f1_score(y_test,y_pred), ndigits=2)
+#         grup_prediksi.append("Random Forest")
+#         acc.append(accuracy_rf)
+#         grup_precision.append(precision_rf)
+#         grup_recall.append(recall_rf)
+#         grup_f1.append(f1_rf)
 
-    if st.button('Bandingkan'):
-        st.subheader("Accuracy Score")
-        for i in grup_prediksi:
-            for j in acc:
-                if grup_prediksi.index(i)==acc.index(j):
-                    st.info(f"""{i} = {j}%""")
-        x_pos = np.arange(len(grup_prediksi))
-        plt.bar(x_pos, acc, align='center', alpha=0.5, color='blue')
-        plt.xticks(x_pos, grup_prediksi, rotation=50)
-        plt.ylabel('Accuracy (%)')
-        plt.title('Accuracy Score')
-        st.pyplot(plt.show())
+#     if st.button('Bandingkan'):
+#         st.subheader("Accuracy Score")
+#         for i in grup_prediksi:
+#             for j in acc:
+#                 if grup_prediksi.index(i)==acc.index(j):
+#                     st.info(f"""{i} = {j}%""")
+#         x_pos = np.arange(len(grup_prediksi))
+#         plt.bar(x_pos, acc, align='center', alpha=0.5, color='blue')
+#         plt.xticks(x_pos, grup_prediksi, rotation=50)
+#         plt.ylabel('Accuracy (%)')
+#         plt.title('Accuracy Score')
+#         st.pyplot(plt.show())
 
-        st.subheader("Precision Score")
-        for i in grup_prediksi:
-            for j in grup_precision:
-                if grup_prediksi.index(i)==grup_precision.index(j):
-                    st.info(f"""{i} = {j}""")
-        x_pos = np.arange(len(grup_prediksi))
-        plt.bar(x_pos, grup_precision, align='center', alpha=0.5, color='blue')
-        plt.xticks(x_pos, grup_prediksi, rotation=50)
-        plt.ylabel('Precision')
-        plt.title('Precision Score')
-        st.pyplot(plt.show())
+#         st.subheader("Precision Score")
+#         for i in grup_prediksi:
+#             for j in grup_precision:
+#                 if grup_prediksi.index(i)==grup_precision.index(j):
+#                     st.info(f"""{i} = {j}""")
+#         x_pos = np.arange(len(grup_prediksi))
+#         plt.bar(x_pos, grup_precision, align='center', alpha=0.5, color='blue')
+#         plt.xticks(x_pos, grup_prediksi, rotation=50)
+#         plt.ylabel('Precision')
+#         plt.title('Precision Score')
+#         st.pyplot(plt.show())
 
-        st.subheader("Recall Score")
-        for i in grup_prediksi:
-            for j in grup_recall:
-                if grup_prediksi.index(i)==grup_recall.index(j):
-                    st.info(f"""{i} = {j}""")
-        x_pos = np.arange(len(grup_prediksi))
-        plt.bar(x_pos, grup_recall, align='center', alpha=0.5,  color='blue')
-        plt.xticks(x_pos, grup_prediksi, rotation=50)
-        plt.ylabel('Recall')
-        plt.title('Recall Score')
-        st.pyplot(plt.show())
+#         st.subheader("Recall Score")
+#         for i in grup_prediksi:
+#             for j in grup_recall:
+#                 if grup_prediksi.index(i)==grup_recall.index(j):
+#                     st.info(f"""{i} = {j}""")
+#         x_pos = np.arange(len(grup_prediksi))
+#         plt.bar(x_pos, grup_recall, align='center', alpha=0.5,  color='blue')
+#         plt.xticks(x_pos, grup_prediksi, rotation=50)
+#         plt.ylabel('Recall')
+#         plt.title('Recall Score')
+#         st.pyplot(plt.show())
 
-        st.subheader("F1 Score")
-        for i in grup_prediksi:
-            for j in grup_f1:
-                if grup_prediksi.index(i)==grup_f1.index(j):
-                    st.info(f"""{i} = {j}""")
-        x_pos = np.arange(len(grup_prediksi))
-        plt.bar(x_pos, grup_f1, align='center', alpha=0.5,  color='blue')
-        plt.xticks(x_pos, grup_prediksi, rotation=50)
-        plt.ylabel('F1')
-        plt.title('F1 Score')
-        st.pyplot(plt.show())
+#         st.subheader("F1 Score")
+#         for i in grup_prediksi:
+#             for j in grup_f1:
+#                 if grup_prediksi.index(i)==grup_f1.index(j):
+#                     st.info(f"""{i} = {j}""")
+#         x_pos = np.arange(len(grup_prediksi))
+#         plt.bar(x_pos, grup_f1, align='center', alpha=0.5,  color='blue')
+#         plt.xticks(x_pos, grup_prediksi, rotation=50)
+#         plt.ylabel('F1')
+#         plt.title('F1 Score')
+#         st.pyplot(plt.show())
 
-with tab4:
-    num_cols=['age', 'bmi', 'avg_glucose_level']
-    jenis_normalisasi=MinMaxScaler()
-    df_new[num_cols] = jenis_normalisasi.fit_transform(df_new[num_cols])
-    X = df_new.drop(["stroke"], axis=1).values
-    y = df_new["stroke"].values
-    #Proses Klasifikasi
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-    model = KNeighborsClassifier(n_neighbors=2)
-    model.fit(X_train, y_train)
-    y_pred= model.predict(X_test)
-    accuracy=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
-    if model:
-        nama_model="K-Nearest Neighbors"
-    if jenis_normalisasi:
-        nama_normal="MinMax Scaler"
+# with tab4:
+#     num_cols=['age', 'bmi', 'avg_glucose_level']
+#     jenis_normalisasi=MinMaxScaler()
+#     df_new[num_cols] = jenis_normalisasi.fit_transform(df_new[num_cols])
+#     X = df_new.drop(["stroke"], axis=1).values
+#     y = df_new["stroke"].values
+#     #Proses Klasifikasi
+#     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+#     model = KNeighborsClassifier(n_neighbors=2)
+#     model.fit(X_train, y_train)
+#     y_pred= model.predict(X_test)
+#     accuracy=round(accuracy_score(y_pred, y_test)*100, ndigits = 2)
+#     if model:
+#         nama_model="K-Nearest Neighbors"
+#     if jenis_normalisasi:
+#         nama_normal="MinMax Scaler"
 
-    st.info(f"""
-        Implementasi ini menggunakan jenis normalisasi {nama_normal} dan jenis model {nama_model} dengan tingkat akurasi terbaik yaitu {accuracy}%.
-        """)
+#     st.info(f"""
+#         Implementasi ini menggunakan jenis normalisasi {nama_normal} dan jenis model {nama_model} dengan tingkat akurasi terbaik yaitu {accuracy}%.
+#         """)
 
-    with st.form("my_form"):
-        age = st.number_input('Age')
-        gender = st.selectbox('Gender',('Male', 'Female', 'Other'))
-        hypertension = st.selectbox('Hypertension',('Yes', 'No'))
-        HeartDisease = st.selectbox('Heart Disease',('Yes', 'No'))
-        married = st.selectbox('Ever Married',('Yes', 'No'))
-        workType = st.selectbox('Work Type',('Children', 'Govt Job', 'Never Worked', 'Private', 'Self-Employed'))
-        Residence_type = st.selectbox('Residence Type',('Rural', 'Urban'))
-        avgGlucose = st.number_input('Average Glucose Level(mg/dL)')
-        bmi = st.number_input('Body Massa Index (Kg/m2)')
-        smoke = st.selectbox('Smoking Status',('Unknown','Formerly Smoked', 'Never smoked','Smokes'))
+#     with st.form("my_form"):
+#         age = st.number_input('Age')
+#         gender = st.selectbox('Gender',('Male', 'Female', 'Other'))
+#         hypertension = st.selectbox('Hypertension',('Yes', 'No'))
+#         HeartDisease = st.selectbox('Heart Disease',('Yes', 'No'))
+#         married = st.selectbox('Ever Married',('Yes', 'No'))
+#         workType = st.selectbox('Work Type',('Children', 'Govt Job', 'Never Worked', 'Private', 'Self-Employed'))
+#         Residence_type = st.selectbox('Residence Type',('Rural', 'Urban'))
+#         avgGlucose = st.number_input('Average Glucose Level(mg/dL)')
+#         bmi = st.number_input('Body Massa Index (Kg/m2)')
+#         smoke = st.selectbox('Smoking Status',('Unknown','Formerly Smoked', 'Never smoked','Smokes'))
 
         
-        submitted = st.form_submit_button("Submit")
+#         submitted = st.form_submit_button("Submit")
 
-        #ubah data input 
-        if gender=='Male':
-            Female=0
-            Male=1
-            Other=0
-        elif gender=='Female':
-            Female=1
-            Male=0
-            Other=0
-        else:
-            Female=0
-            Male=0
-            Other=1
+#         #ubah data input 
+#         if gender=='Male':
+#             Female=0
+#             Male=1
+#             Other=0
+#         elif gender=='Female':
+#             Female=1
+#             Male=0
+#             Other=0
+#         else:
+#             Female=0
+#             Male=0
+#             Other=1
 
-        if hypertension=='Yes':
-            hypertension=1
-        else:
-            hypertension=0
+#         if hypertension=='Yes':
+#             hypertension=1
+#         else:
+#             hypertension=0
 
-        if HeartDisease=='Yes':
-            heart_disease=1
-        else:
-            heart_disease=0
+#         if HeartDisease=='Yes':
+#             heart_disease=1
+#         else:
+#             heart_disease=0
 
-        if married=='Yes':
-            Yes=1
-            No=0
-        else:
-            Yes=0
-            No=0
-
-
-        if workType=='Children':
-            Govt_job=0
-            Never_worked=0
-            Private=0
-            Self_employed=0
-            children=1
-        elif married=='Govt job':
-            Govt_job=1
-            Never_worked=0
-            Private=0
-            Self_employed=0
-            children=0
-        elif married=='Never Worked':
-            Govt_job=0
-            Never_worked=1
-            Private=0
-            Self_employed=0
-            children=0
-        elif married=='Private':
-            Govt_job=0
-            Never_worked=0
-            Private=1
-            Self_employed=0
-            children=0
-        else:
-            Govt_job=0
-            Never_worked=0
-            Private=0
-            Self_employed=1
-            children=0
-
-        if Residence_type=='Urban':
-            Urban=1
-            Rural=0
-        else:
-            Urban=0
-            Rural=1
-
-        if smoke=='Formerly Smoked':
-            formerly_smoked=1
-            never_smoked=0
-            smokes=0
-            Unknown=0
-        elif smoke=='Never smoked':
-            formerly_smoked=0
-            never_smoked=1
-            smokes=0
-            Unknown=0
-        elif smoke=='Smoked':
-            formerly_smoked=0
-            never_smoked=0
-            smokes=1
-            Unknown=0
-        else:
-            formerly_smoked=0
-            never_smoked=0
-            smokes=0
-            Unknown=1
+#         if married=='Yes':
+#             Yes=1
+#             No=0
+#         else:
+#             Yes=0
+#             No=0
 
 
-        a=np.array([[age, hypertension, heart_disease, avgGlucose, bmi, Female, Male, Other, No, Yes, Govt_job, Never_worked, Private, Self_employed, children, Rural, Urban, Unknown, formerly_smoked, never_smoked, smokes]])
+#         if workType=='Children':
+#             Govt_job=0
+#             Never_worked=0
+#             Private=0
+#             Self_employed=0
+#             children=1
+#         elif married=='Govt job':
+#             Govt_job=1
+#             Never_worked=0
+#             Private=0
+#             Self_employed=0
+#             children=0
+#         elif married=='Never Worked':
+#             Govt_job=0
+#             Never_worked=1
+#             Private=0
+#             Self_employed=0
+#             children=0
+#         elif married=='Private':
+#             Govt_job=0
+#             Never_worked=0
+#             Private=1
+#             Self_employed=0
+#             children=0
+#         else:
+#             Govt_job=0
+#             Never_worked=0
+#             Private=0
+#             Self_employed=1
+#             children=0
+
+#         if Residence_type=='Urban':
+#             Urban=1
+#             Rural=0
+#         else:
+#             Urban=0
+#             Rural=1
+
+#         if smoke=='Formerly Smoked':
+#             formerly_smoked=1
+#             never_smoked=0
+#             smokes=0
+#             Unknown=0
+#         elif smoke=='Never smoked':
+#             formerly_smoked=0
+#             never_smoked=1
+#             smokes=0
+#             Unknown=0
+#         elif smoke=='Smoked':
+#             formerly_smoked=0
+#             never_smoked=0
+#             smokes=1
+#             Unknown=0
+#         else:
+#             formerly_smoked=0
+#             never_smoked=0
+#             smokes=0
+#             Unknown=1
+
+
+#         a=np.array([[age, hypertension, heart_disease, avgGlucose, bmi, Female, Male, Other, No, Yes, Govt_job, Never_worked, Private, Self_employed, children, Rural, Urban, Unknown, formerly_smoked, never_smoked, smokes]])
             
-        data_input=pd.DataFrame(a, columns=['age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi', 'gender_Female', 'gender_Male', 'gender_Other','ever_married_No', 'ever_married_Yes', 'work_type_Govt_job', 'work_type_Never_worked', 'work_type_Private', 'work_type_Self-employed', 'work_type_children', 'Residence_type_Rural', 'Residence_type_Urban', 'smoking_status_Unknown', 'smoking_status_formerly smoked','smoking_status_never smoked', 'smoking_status_smokes'])
+#         data_input=pd.DataFrame(a, columns=['age', 'hypertension', 'heart_disease', 'avg_glucose_level', 'bmi', 'gender_Female', 'gender_Male', 'gender_Other','ever_married_No', 'ever_married_Yes', 'work_type_Govt_job', 'work_type_Never_worked', 'work_type_Private', 'work_type_Self-employed', 'work_type_children', 'Residence_type_Rural', 'Residence_type_Urban', 'smoking_status_Unknown', 'smoking_status_formerly smoked','smoking_status_never smoked', 'smoking_status_smokes'])
         
         
-    if submitted:
-        stroke_pred=model.predict(data_input)
-        if stroke_pred[0]==1:
-             st.error('Terdeteksi penyakit Stroke')
-        else:
-             st.success('Tidak terdeteksi penyakit Stroke')
+#     if submitted:
+#         stroke_pred=model.predict(data_input)
+#         if stroke_pred[0]==1:
+#              st.error('Terdeteksi penyakit Stroke')
+#         else:
+#              st.success('Tidak terdeteksi penyakit Stroke')
