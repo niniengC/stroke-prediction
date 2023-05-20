@@ -185,7 +185,7 @@ with tab1:
    st.header("Visualisasi Data")
    st.subheader("A. Heatmap Correlation")
    # Compute the correlation matrix
-   corr = df.corr()
+   corr = df.corr(numeric_only=False)
 
    # Generate a mask for the upper triangle
    mask = np.triu(np.ones_like(corr))
